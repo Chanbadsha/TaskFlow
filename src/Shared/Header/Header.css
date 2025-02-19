@@ -1,0 +1,7 @@
+.letter:nth-child(odd) {
+    color: var(--accent);
+}
+
+.letter:nth-child(even) {
+    color: var(--text);
+}

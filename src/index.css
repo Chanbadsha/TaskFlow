@@ -1,2 +1,38 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+/* Light Mode Colors */
+:root {
+    --primary: #FF6767;
+    --secondary: #FFFFFF;
+    --accent: #F24E1E;
+    --btn:white;
+    --text: black;
+  }
+  
+  /* Dark Mode Colors */
+  .dark {
+    --primary: #F24E1E;
+    --secondary: #000000;
+    --accent: #FF6767;
+    --btn:black;
+    --text: white;
+  }
+  
+
+  .bg-primary{
+    background-color: var(--primary);
+  }
+  .bg-secondary{
+    background-color: var(--secondary);
+  }
+  .text-primary{
+    color: var(--text);
+  }
+  .bg-accent{
+    background-color: var(--accent);
+  }
+  .btn-text{
+    color:var(--btn)
+  }
