@@ -1,38 +1,48 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
 /* Light Mode Colors */
 :root {
-    --primary: #FF6767;
-    --secondary: #FFFFFF;
-    --accent: #F24E1E;
-    --btn:white;
-    --text: black;
-  }
-  
-  /* Dark Mode Colors */
-  .dark {
-    --primary: #F24E1E;
-    --secondary: #000000;
-    --accent: #FF6767;
-    --btn:black;
-    --text: white;
-  }
-  
+  --primary: #FF6767;
+  --secondary: #FFFFFF;
+  --accent: #F24E1E;
+  --btn: white;
+  --text: black;
+}
 
-  .bg-primary{
-    background-color: var(--primary);
-  }
-  .bg-secondary{
-    background-color: var(--secondary);
-  }
-  .text-primary{
-    color: var(--text);
-  }
-  .bg-accent{
-    background-color: var(--accent);
-  }
-  .btn-text{
-    color:var(--btn)
-  }
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --primary: #f24e1e;
+  --secondary: #000000;
+  --accent: #ff6767;
+  --btn: black;
+  --text: white;
+}
+
+/* Background Colors */
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.bg-accent {
+  background-color: var(--accent);
+}
+
+/* Text Colors */
+.text-primary {
+  color: var(--text);
+}
+
+/* Button Colors */
+.btn-text {
+  color: var(--btn);
+}
+
+/* Body Styling */
+body {
+  background-color: var(--secondary);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

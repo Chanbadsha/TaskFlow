@@ -19,7 +19,7 @@ export default function Header() {
     <nav className=" bg-base-100 shadow-sm">
       <div className="container navbar mx-auto">
         <div className="">
-          <Link to='/' className="btn btn-outline outline-none border-none active:bg-transparent hover:bg-transparent hover:shadow-none text-xl lg:text-4xl">
+          <Link className="btn btn-outline outline-none border-none active:bg-transparent hover:bg-transparent hover:shadow-none text-xl lg:text-4xl">
             <span className="letter">T</span>
             <span className="letter">a</span>
             <span className="letter">s</span>
