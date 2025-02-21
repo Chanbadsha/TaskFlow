@@ -3,12 +3,11 @@ import { useForm } from "react-hook-form";
 import loginImg from "../../assets/Auth/login.png";
 import UseAuth from "../../Hooks/ContextHook/AuthContextHook/UseAuth";
 import toast from "react-hot-toast";
-import { useLocation } from "react-router";
+import {  useNavigate } from "react-router";
 
 export default function Login() {
   const {handleEmailLogin}= UseAuth()
-  const location = useLocation()
-  console.log(location)
+const navigate = useNavigate()
   // Login User
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -17,6 +16,7 @@ export default function Login() {
     .then(res=>{
       console.log(res)
       toast.success("User Login Suceessfull")
+      navigate('/')
     })
     .catch(err=>{
       console.log(err)

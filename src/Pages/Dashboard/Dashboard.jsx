@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { FaTachometerAlt, FaTasks, FaClipboardCheck, FaListAlt, FaCog, FaQuestionCircle, FaBars } from "react-icons/fa";
+import { FaTachometerAlt, FaTasks, FaClipboardCheck, FaListAlt, FaCog, FaQuestionCircle, FaBars, FaSignOutAlt } from "react-icons/fa";
 
 import { Link, Outlet } from "react-router";
 import UseAuth from "../../Hooks/ContextHook/AuthContextHook/UseAuth";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [collapse, setCollapse] = useState(false);
-  const { user } = UseAuth();
+  const { user,logOutUser } = UseAuth();
   // const isDarkMode = true;
+const handleLogOut=()=>{
+  logOutUser()
+  .then(()=>{
+    toast.success("User Log Out Successfull")
+  })
 
+}
   // console.log(usersInfo.role);
   useEffect(() => {
     const updateCollapseState = () => {
@@ -33,7 +40,8 @@ const Dashboard = () => {
   const users = true;
 
   return (
-    <div className="min-h-screen  container mx-auto flex">
+<main className="bg-gray-100">
+<div className="min-h-screen  container mx-auto gap-12 flex">
       {/* <Helmet>
         <title>Edubrige || Dashboard</title>
       </Helmet> */}
@@ -75,8 +83,8 @@ const Dashboard = () => {
           {/* Navigation Menu */}
           <div className="flex-1">
             <nav className="w-full">
-          {/* Navigation Menu */}
-<ul className="space-y-4">
+     {/* Navigation Menu */}
+<ul className="space-y-4 flex flex-col flex-1">
   {users && (
     <>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
@@ -118,7 +126,19 @@ const Dashboard = () => {
       {!collapse && <span>Help</span>}
     </Link>
   </li>
+
+  {/* Logout Button */}
+  <li className="mt-auto">
+    <button
+      onClick={handleLogOut}
+      className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-700 text-white font-semibold p-2 rounded-lg transition"
+    >
+      <FaSignOutAlt size={collapse ? 28 : 20} />
+      {!collapse && <span>Log Out</span>}
+    </button>
+  </li>
 </ul>
+
             </nav>
           </div>
         </div>
@@ -145,8 +165,8 @@ const Dashboard = () => {
           )}
         </span>
         <nav className="w-full">
-    {/* Navigation Menu */}
-<ul className="space-y-4">
+  {/* Navigation Menu */}
+<ul className="space-y-4 flex flex-col flex-1">
   {users && (
     <>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
@@ -188,15 +208,29 @@ const Dashboard = () => {
       {!collapse && <span>Help</span>}
     </Link>
   </li>
+
+  {/* Logout Button */}
+  <li className="mt-auto">
+    <button
+      onClick={handleLogOut}
+      className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-700 text-white font-semibold p-2 rounded-lg transition"
+    >
+      <FaSignOutAlt size={collapse ? 28 : 20} />
+      {!collapse && <span>Log Out</span>}
+    </button>
+  </li>
 </ul>
+
         </nav>
       </div>
 
-      {/* Right Section: Main Content */}
-      <div className={`flex-1  bg-gray-100`}>
-        <Outlet />
-      </div>
+    {/* Right Section: Main Content */}
+<div className="flex-1 h-[91.67vh] my-auto border  shadow rounded-2xl bg-white">
+  <Outlet />
+</div>
+
     </div>
+</main>
   );
 };
 

@@ -1,29 +1,38 @@
 import { useForm } from "react-hook-form";
 import signInImg from "../../assets/Auth/signin.png";
 import UseAuth from "../../Hooks/ContextHook/AuthContextHook/UseAuth";
+import { useNavigate } from "react-router";
 
 export default function Register() {
-  const { createUser,updateUserProfile,googleLogin, } = UseAuth();
-
+  const { createUser, updateUserProfile, googleLogin } = UseAuth();
+  const navigate = useNavigate("/");
   // Create User
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const userFullName = data?.userFirstName + data?.userLastName
+    const userFullName = data?.userFirstName + data?.userLastName;
     createUser(data?.userEmail, data?.userPassword)
-    // eslint-disable-next-line no-unused-vars
-    .then(result=>{
-      updateUserProfile(userFullName,"https://i.ibb.co.com/3YV0gCsr/My.jpg")
-      .then(res=>console.log(res))
-    })
-    .catch(err=>console.log(err))
+      // eslint-disable-next-line no-unused-vars
+      .then((result) => {
+        updateUserProfile(
+          userFullName,
+          "https://i.ibb.co.com/3YV0gCsr/My.jpg"
+        ).then((res) => {
+          console.log(res);
+          navigate("/");
+        });
+      })
+      .catch((err) => console.log(err));
   };
   // Social Login
   // Login with Google
-  const handleGoogleLogin=()=>{
+  const handleGoogleLogin = () => {
     googleLogin()
-  .then(res=>console.log(res))
-  .catch(err=>console.log(err))
-  }
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="min-h-full flex items-center justify-center bg-gray-200 p-6">
@@ -110,7 +119,10 @@ export default function Register() {
 
           {/* Social Login */}
           <div className="flex justify-center gap-4 mt-4">
-            <p onClick={handleGoogleLogin} className="btn px-4 py-2 rounded-lg bg-white bg-opacity-20 text-black transition-all duration-300 hover:bg-white hover:text-[#FF6767] hover:shadow-lg hover:scale-105">
+            <p
+              onClick={handleGoogleLogin}
+              className="btn px-4 py-2 rounded-lg bg-white bg-opacity-20 text-black transition-all duration-300 hover:bg-white hover:text-[#FF6767] hover:shadow-lg hover:scale-105"
+            >
               Google
             </p>
             <button className="btn px-4 py-2 rounded-lg bg-white bg-opacity-20 text-black transition-all duration-300 hover:bg-white hover:text-[#FF6767] hover:shadow-lg hover:scale-105">

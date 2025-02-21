@@ -3,9 +3,11 @@ import "./Header.css";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import { Link } from "react-router";
+import UseAuth from "../../Hooks/ContextHook/AuthContextHook/UseAuth";
 export default function Header() {
   const [date, setDate] = useState(null);
   const [day, setDay] = useState(null);
+  const {user}= UseAuth()
   useEffect(() => {
     setDay(moment().format("dddd"));
     setDate(moment().subtract(10, 'days').calendar());
@@ -17,7 +19,7 @@ export default function Header() {
   }
   return (
     <nav className=" bg-base-100 shadow-sm">
-      <div className="container navbar mx-auto">
+      <div className="container navbar justify-between mx-auto">
         <div className="">
           <Link className="btn btn-outline outline-none border-none active:bg-transparent hover:bg-transparent hover:shadow-none text-xl lg:text-4xl">
             <span className="letter">T</span>
@@ -32,7 +34,7 @@ export default function Header() {
         </div>
         <div className="flex items-center md:flex-1 gap-2">
           <div className="flex w-full items-center">
-            <form onSubmit={handleSubmit} className="lg:w-[50%] md:w-[70%] w-full mx-auto">
+            <form onSubmit={handleSubmit} className="hidden md:block lg:w-[50%] md:w-[70%] w-full mx-auto">
               <div className="flex space-x-1">
                 <input
                   type="text"
@@ -60,17 +62,27 @@ export default function Header() {
           <li>No nottificatin yet</li>
             </ul>
           </div>
-          <div
-        
-              className="btn hidden md:flex btn-ghost bg-primary btn-text btn-circle"
-            >
-          <FaCalendarAlt />
+          {user ? (
+  <>
+    <div className="btn hidden md:flex items-center justify-center bg-primary text-white hover:bg-primary-dark rounded-full p-3 transition duration-200 ease-in-out">
+      <FaCalendarAlt className="text-xl" />
+    </div>
+    <div className="hidden md:flex flex-col text-center font-medium ml-4">
+      <span className="text-lg text-black font-semibold">{day}</span>
+      <span className="text-gray-700 text-sm">{date}</span>
+    </div>
+  </>
+) : (
+  <div className="">
+    <Link
+      to="/login"
+      className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition duration-200 ease-in-out"
+    >
+      Login
+    </Link>
+  </div>
+)}
 
-            </div>
-          <div className=" hidden md:flex flex-col text-center font-medium">
-            <span> {day}</span>
-           <span className="text-gray-700"> {date}</span>
-          </div>
         </div>
       </div>
     </nav>
