@@ -19,7 +19,7 @@ const handleLogOut=()=>{
   // console.log(usersInfo.role);
   useEffect(() => {
     const updateCollapseState = () => {
-      if (window.innerWidth <= 560) {
+      if (window.innerWidth <= 770) {
         setCollapse(true);
       } else {
         setCollapse(false);
@@ -41,7 +41,7 @@ const handleLogOut=()=>{
 
   return (
 <main className="bg-gray-100">
-<div className="min-h-screen  container mx-auto gap-12 flex">
+<div className="min-h-screen  container mx-auto gap-6 flex">
       {/* <Helmet>
         <title>Edubrige || Dashboard</title>
       </Helmet> */}
@@ -94,9 +94,9 @@ const handleLogOut=()=>{
         </Link>
       </li>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
-        <Link to="/dashboard/my-application" className="flex items-center gap-2">
+        <Link to="/addtask" className="flex items-center gap-2">
           {collapse ? <FaTasks size={28} /> : <FaTasks />}
-          {!collapse && <span>Vital Task</span>}
+          {!collapse && <span>Add Task</span>}
         </Link>
       </li>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
@@ -176,9 +176,9 @@ const handleLogOut=()=>{
         </Link>
       </li>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
-        <Link to="/dashboard/my-application" className="flex items-center gap-2">
+        <Link to="/addtask" className="flex items-center gap-2">
           {collapse ? <FaTasks size={28} /> : <FaTasks />}
-          {!collapse && <span>Vital Task</span>}
+          {!collapse && <span>Add Task</span>}
         </Link>
       </li>
       <li className="hover:bg-gray-700 rounded-lg p-2 transition">
@@ -225,7 +225,7 @@ const handleLogOut=()=>{
       </div>
 
     {/* Right Section: Main Content */}
-<div className="flex-1 h-[91.67vh] my-auto border  shadow rounded-2xl bg-white">
+<div className="flex-1 items-center max-h-auto min-h-[91.67vh] my-auto border  shadow rounded-2xl bg-white">
   <Outlet />
 </div>
 
