@@ -26,7 +26,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-200 p-6">
+    <div className="min-h-full flex items-center justify-center bg-gray-200 p-6">
       <div className="relative bg-primary bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-xl p-6 lg:p-10 w-full max-w-7xl flex flex-col lg:flex-row items-center">
         {/* Left Side - Image */}
         <div className=" md:flex flex-1 mb-12 justify-center">

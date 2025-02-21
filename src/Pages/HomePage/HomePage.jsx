@@ -1,6 +1,9 @@
+import Dashboard from "../Dashboard/Dashboard";
 
 export default function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      <Dashboard/>
+    </div>
   )
 }

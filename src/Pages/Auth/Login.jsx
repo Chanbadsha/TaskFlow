@@ -1,18 +1,33 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import loginImg from "../../assets/Auth/login.png";
+import UseAuth from "../../Hooks/ContextHook/AuthContextHook/UseAuth";
+import toast from "react-hot-toast";
+import { useLocation } from "react-router";
 
 export default function Login() {
-  // Create User
+  const {handleEmailLogin}= UseAuth()
+  const location = useLocation()
+  console.log(location)
+  // Login User
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    handleEmailLogin(data?.userEmail,data?.userPassword)
+    .then(res=>{
+      console.log(res)
+      toast.success("User Login Suceessfull")
+    })
+    .catch(err=>{
+      console.log(err)
+    })
   };
 
   const handleGoogleLogin = () => {};
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-200 p-4 sm:p-6">
-      <div className="relative bg-primary bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 w-full max-w-4xl lg:max-w-6xl flex flex-col lg:flex-row items-center">
+    <div className="min-h-full flex items-center justify-center bg-gray-200 p-4 sm:p-6">
+      <div className="relative  bg-primary bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 w-full max-w-4xl lg:max-w-6xl flex flex-col lg:flex-row items-center">
         {/* Left Side - Image */}
         <div className="hidden md:flex flex-1 justify-center">
           <img

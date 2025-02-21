@@ -4,6 +4,7 @@ import auth from "../../Firebase/Firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
@@ -25,6 +26,11 @@ export default function AuthProvider({ children }) {
       photoURL: photoURL,
     });
   };
+
+  // Email Login
+  const handleEmailLogin = (email,password)=>{
+    return signInWithEmailAndPassword(auth,email,password)
+  }
   // Social Login
   // Google Login
   const googleProvider = new GoogleAuthProvider();
@@ -51,6 +57,7 @@ export default function AuthProvider({ children }) {
     setUser,
     updateUserProfile,
     googleLogin,
+    handleEmailLogin
   };
 
   return (
